@@ -1,33 +1,54 @@
 import { useState, useEffect } from 'react';
 import { Clock, Flame, Star, ArrowRight } from 'lucide-react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 import Hero from '../components/landing/Hero';
 import RecipeGrid from '../components/landing/RecipeGrid';
 import Button from '../components/common/Button';
 import Footer from '../components/landing/Footer';
+import SortFilter from '../components/landing/SortFilter';
 import { useGetRecipesQuery } from '../features/recipes/recipeApi';
 
 const LandingPage = () => {
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
   const [search, setSearch] = useState(searchParams.get('search') || '');
+  const [sortBy, setSortBy] = useState<string>(searchParams.get('sortBy') || 'name');
+  const [order, setOrder] = useState<'asc' | 'desc'>((searchParams.get('order') as 'asc' | 'desc') || 'asc');
   const [page, setPage] = useState(1);
   const limit = 12;
 
-  // Update search when URL params change
+  // Update search/sort when URL params change
   useEffect(() => {
     const searchQuery = searchParams.get('search');
+    const sortByQuery = searchParams.get('sortBy') || 'name';
+    const orderQuery = (searchParams.get('order') as 'asc' | 'desc') || 'asc';
+    
     if (searchQuery) {
       setSearch(searchQuery);
       setPage(1);
     }
+    setSortBy(sortByQuery);
+    setOrder(orderQuery);
   }, [searchParams]);
+
+  const handleSortChange = (newSortBy: string, newOrder: 'asc' | 'desc') => {
+    setSortBy(newSortBy);
+    setOrder(newOrder);
+    setPage(1);
+    
+    // Update URL parameters
+    const params = new URLSearchParams(searchParams);
+    params.set('sortBy', newSortBy);
+    params.set('order', newOrder);
+    navigate(`?${params.toString()}`, { replace: true });
+  };
 
   const { data, isLoading, isError } = useGetRecipesQuery({
     page,
     limit,
     search,
-    sortBy: 'name',
-    order: 'asc',
+    sortBy,
+    order,
   });
 
   return (
@@ -72,6 +93,13 @@ const LandingPage = () => {
             <p className="text-orange-500 font-semibold mb-2 uppercase text-sm tracking-wider">EXPLORE</p>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900">Popular Recipes</h2>
           </div>
+
+          {/* Sort Filter */}
+          <SortFilter 
+            sortBy={sortBy} 
+            order={order} 
+            onSortChange={handleSortChange} 
+          />
 
 
 
