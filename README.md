@@ -70,7 +70,6 @@ A modern, responsive recipe discovery and management platform built with React 1
 - **Tailwind CSS 4.1.18** - Utility-first CSS framework
 - **Tailwind CSS Vite Plugin** - Optimized build integration
 - **Lucide React 0.562** - Beautiful SVG icons (20+ used)
-- **clsx & tailwind-merge** - Conditional class utilities
 
 ### Notifications & UX
 - **React Hot Toast 2.6.0** - Non-intrusive toast notifications
@@ -158,9 +157,11 @@ src/
 
 1. **Clone the repository**
 ```bash
-git clone <repository-url>
+git clone https://github.com/kskalisa/recipe_api
 cd Recipe-API
 ```
+
+
 
 2. **Install dependencies**
 ```bash
@@ -348,39 +349,6 @@ UI Re-render
 3. Commit changes (`git commit -m 'Add AmazingFeature'`)
 4. Push to branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
-
-## 📝 License
-
-This project is open source and available under the MIT License.
-
-## 📞 Support
-
-For issues, questions, or suggestions:
-1. Check existing issues
-2. Create a new issue with detailed description
-3. Include browser/OS information
-4. Provide steps to reproduce
-
-## 🎯 Future Enhancements
-
-- [ ] Recipe rating and reviews system
-- [ ] Favorite/bookmark recipes
-- [ ] Recipe sharing functionality
-- [ ] Ingredient availability checker
-- [ ] Nutrition calculator
-- [ ] Meal planning feature
-- [ ] Dark mode toggle
-- [ ] Multi-language support
-- [ ] Recipe recommendation engine
-- [ ] User profile customization
-
-## 📚 Documentation
-
-For more detailed documentation on specific features:
-- [Authentication Flow](./docs/AUTHENTICATION.md)
-- [API Integration](./docs/API.md)
-- [Component Guide](./docs/COMPONENTS.md)
-- [Redux Setup](./docs/REDUX.md)
 
 ---
 
