@@ -9,7 +9,7 @@ import SortFilter from '../components/landing/SortFilter';
 import { useGetRecipesQuery } from '../features/recipes/recipeApi';
 
 const LandingPage = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const [search, setSearch] = useState(searchParams.get('search') || '');
   const [sortBy, setSortBy] = useState<string>(searchParams.get('sortBy') || 'name');
