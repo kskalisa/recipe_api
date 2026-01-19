@@ -1,4 +1,4 @@
-# 🍽️ Recipe API - Full Stack Recipe Management Application
+# 🍽️ Recipe API - Recipe Management Application
 
 A modern, responsive recipe discovery and management platform built with React 19, Redux Toolkit Query, and Tailwind CSS. Features user authentication, recipe CRUD operations, and advanced search/filtering capabilities.
 
@@ -160,7 +160,10 @@ src/
 git clone https://github.com/kskalisa/recipe_api
 cd Recipe-API
 ```
+1. **🚀 Live Demo**
 
+🔗 **Live Application (Netlify):**
+👉 https://recepe.netlify.app
 
 
 2. **Install dependencies**
